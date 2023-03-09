@@ -1,0 +1,35 @@
+// merge is a function to merge 2 different webpack config objects
+// take all the config in webpack.common.js and merge into this dev config object
+// ModuleFederationPlugin is used to integrate host app and remote app
+const { merge } = require('webpack-merge')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const commonConfig = require('./webpack.common')
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
+const packageJson = require('../package.json')
+
+const devConfig = {
+  mode: 'development',
+  devServer: {
+    port: 8081,
+    historyApiFallback: {
+      index: 'index.html'
+    }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    }),
+    new ModuleFederationPlugin({
+      name: 'marketing', // name property is the global var when the app loads up
+      filename: 'remoteEntry.js',
+      exposes: { // MarketingApp is an alias when ask for that, we will give src/bootstrap.js to
+        './MarketingApp': './src/bootstrap'
+      },
+      //shared: ['react', 'react-dom'] use this if you want to have specific version of the module to share
+      shared: packageJson.dependencies // shortcut - webpack will manage for you
+    })
+
+  ]
+}
+// by specify devConfig in second arg which means devConfig will take priority of any similiar options assigned by commonConfig
+module.exports = merge(commonConfig, devConfig) // merge two config objects and export
