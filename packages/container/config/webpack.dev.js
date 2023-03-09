@@ -2,7 +2,6 @@
 // take all the config in webpack.common.js and merge into this dev config object
 
 const { merge } = require('webpack-merge')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const commonConfig = require('./webpack.common')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin') 
 const packageJson = require('../package.json')
@@ -16,10 +15,7 @@ const devConfig = {
     }
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html'
-    }),
-    new ModuleFederationPlugin({
+      new ModuleFederationPlugin({
       name: 'container',
       remotes: { // key value pair to load up that file
         marketing: 'marketing@http://localhost:8081/remoteEntry.js'

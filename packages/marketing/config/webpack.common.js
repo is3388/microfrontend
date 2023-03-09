@@ -3,6 +3,8 @@
 // babel/preset-react is babel process all jsx tags and add them into our app
 // babel/preset-env is babel transform our code in ES2015 to ES2020 so on and convert down to ES5 syntax
 // babel/plugin-transform-runtime is add additional code to enable some features for our project inside the browser such as async await syntax
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   module: {
     rules: [
@@ -18,5 +20,10 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+    template: './public/index.html'
+    })
+  ]
 }

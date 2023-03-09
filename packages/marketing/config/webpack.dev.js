@@ -2,7 +2,6 @@
 // take all the config in webpack.common.js and merge into this dev config object
 // ModuleFederationPlugin is used to integrate host app and remote app
 const { merge } = require('webpack-merge')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const commonConfig = require('./webpack.common')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 const packageJson = require('../package.json')
@@ -16,9 +15,6 @@ const devConfig = {
     }
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html'
-    }),
     new ModuleFederationPlugin({
       name: 'marketing', // name property is the global var when the app loads up
       filename: 'remoteEntry.js',
