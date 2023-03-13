@@ -11,7 +11,7 @@ const prodConfig = {
     filename:'[name].[contenthash].js',
      // name of the file created and hash the file content for caching issue
     // filename template
-    publicPath: '/container/latest' //prepend this path to all files that added script tags by htmlWebpackplugin
+    publicPath: '/container/latest/' //prepend this path to all files that added script tags by htmlWebpackplugin
   },
   plugins: [ // remoteEntry files point to PROD domain not localhost:port #
     new ModuleFederationPlugin({
