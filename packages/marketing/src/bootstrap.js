@@ -6,9 +6,12 @@ import { createMemoryHistory, createBrowserHistory } from 'history' // history i
 
 // use mount function to start up react app
 // onNavigate prop comes from container - parent app
-const mount = (el, {onNavigate, defaultHistory}) => {
+// initialPath is the initial pathname of the marketing app which is /
+const mount = (el, {onNavigate, defaultHistory, initialPath}) => {
   // will add more code to this file to sync the current state of our history inside marketing with the history object inside of container
-  const history = defaultHistory || createMemoryHistory() // use defaultHistory if provided, otherwise create memory history
+  const history = defaultHistory || createMemoryHistory({
+    initialEntries: [initialPath]
+  }) // use defaultHistory if provided, otherwise create memory history
   
   if (onNavigate) {
   history.listen(onNavigate) // whenever the path changes, it will auto call onNavigate fn to return the current URL to container

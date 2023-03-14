@@ -21,7 +21,7 @@ const devConfig = {
     new ModuleFederationPlugin({
       name: 'auth', // name property is the global var when the app loads up
       filename: 'remoteEntry.js',
-      exposes: { // MarketingApp is an alias when ask for that, we will give src/bootstrap.js to
+      exposes: { // AuthApp is an alias when ask for that, we will give src/bootstrap.js to
         './AuthApp': './src/bootstrap'
       },
       //shared: ['react', 'react-dom'] use this if you want to have specific version of the module to share

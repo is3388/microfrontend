@@ -14,6 +14,7 @@ const MarketingApp = () => {
     // the history object in marketing app has listen function which returns location object with pathname property so pass back to container as props
     // rename pathname to nextPathname
     const { onParentNavigate } = mount(ref.current, {
+      initialPath: history.location.pathname,
       onNavigate: ({ pathname: nextPathname }) => {        
       // to prevent an infinite loop to make a change on the path, make sure the current path of container is not the same as the current path of marketing app
       const { pathname } = history.location // get the path of container to compare with the nextPathname from marketing current path
