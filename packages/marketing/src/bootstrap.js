@@ -17,8 +17,9 @@ const mount = (el, {onNavigate, defaultHistory}) => {
     <App history={history} />, el
   )
   return {
-    // communication from container down to marketing app
-    // whenever container do some navigation, it will call this function
+    // return an object that from child app with onParentNavigate function 
+    // for communication from container down to marketing app
+    // whenever container parent do some navigation, it will call this function
     // pathname from history.location and rename to nextPathname of container
     onParentNavigate({ pathname: nextPathname }) {
       //console.log('container just navigated')
