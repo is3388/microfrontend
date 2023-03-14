@@ -11,7 +11,7 @@ const devConfig = {
   devServer: {
     port: 8081,
     historyApiFallback: {
-      index: 'index.html'
+      index: '/index.html' //  or use historyApiFallback: true  which shows the URL of user's previous browser history 
     }
   },
   plugins: [
