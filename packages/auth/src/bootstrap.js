@@ -7,7 +7,7 @@ import { createMemoryHistory, createBrowserHistory } from 'history' // history i
 // use mount function to start up react app
 // onNavigate prop comes from container - parent app 
 // initialPath is the initial pathname of the auth app which is /auth/signin
-const mount = (el, {onNavigate, defaultHistory, initialPath}) => {
+const mount = (el, {onSignIn, onNavigate, defaultHistory, initialPath}) => {
   // will add more code to this file to sync the current state of our history inside auth with the history object inside of container
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
@@ -17,7 +17,8 @@ const mount = (el, {onNavigate, defaultHistory, initialPath}) => {
   history.listen(onNavigate) // whenever the path changes, it will auto call onNavigate fn to return the current URL to container
 }
   ReactDOM.render(
-    <App history={history} />, el
+    <App history={history}
+         onSignIn={onSignIn} />, el
   )
   return {
     // return an object that from child app with onParentNavigate function 
