@@ -17,6 +17,7 @@ const App = ({history}) => {
           <Switch>
            <Route path='/auth/signin' component={SignIn} />
            <Route path='/auth/signup' component={SignUp} />
+           <Route path='/' component={SignIn} />
           </Switch>
         </Router>
       </StylesProvider>

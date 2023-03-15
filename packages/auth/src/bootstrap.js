@@ -8,7 +8,7 @@ import { createMemoryHistory, createBrowserHistory } from 'history' // history i
 // onNavigate prop comes from container - parent app 
 // initialPath is the initial pathname of the auth app which is /auth/signin
 const mount = (el, {onNavigate, defaultHistory, initialPath}) => {
-  // will add more code to this file to sync the current state of our history inside marketing with the history object inside of container
+  // will add more code to this file to sync the current state of our history inside auth with the history object inside of container
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
   }) // use defaultHistory if provided, otherwise create memory history
@@ -21,15 +21,15 @@ const mount = (el, {onNavigate, defaultHistory, initialPath}) => {
   )
   return {
     // return an object that from child app with onParentNavigate function 
-    // for communication from container down to marketing app
+    // for communication from container down to auth app
     // whenever container parent do some navigation, it will call this function
     // pathname from history.location and rename to nextPathname of container
     onParentNavigate({ pathname: nextPathname }) {
       //console.log('container just navigated')
-      const { pathname } = history.location // current path of the marketing app
+      const { pathname } = history.location // current path of the auth app
 
       if (pathname !== nextPathname) {
-        history.push(nextPathname) // update the path of marketing matches up with container's current path
+        history.push(nextPathname) // update the path of auth matches up with container's current path
       }
     }
 
