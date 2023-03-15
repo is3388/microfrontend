@@ -9,6 +9,7 @@ import Progress from './components/Progress'
 // to optimize performance use lazy loading only code related to marketing when user tries to show marketing component
 const MarketingLazy = lazy(() => import('./components/MarketingApp'))
 const AuthLazy = lazy(() => import('./components/AuthApp'))
+const DashboardLazy = lazy(() => import('./components/DashboardApp'))
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'co' // generate all classname with prefix of ma and only affects marketing project
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/auth'>  
           <AuthLazy onSignIn={() => setIsSignedIn(true)} />
         </Route>
+        <Route path='/dashboard' component={DashboardLazy} />  
         <Route path='/' component={MarketingLazy} />      
       </Switch>
       </Suspense>

@@ -22,7 +22,8 @@ const devConfig = {
       name: 'container',
       remotes: { // key value pair to load up that file
         marketing: 'marketing@http://localhost:8081/remoteEntry.js',
-        auth: 'auth@http://localhost:8082/remoteEntry.js'
+        auth: 'auth@http://localhost:8082/remoteEntry.js',
+        dashboard: 'dashboard@http://localhost:8083/remoteEntry.js'
       },
       //shared: ['react', 'react-dom'] use this if you need specific version of the module to share
       shared: packageJson.dependencies // shortcut - webpack will manage for you
